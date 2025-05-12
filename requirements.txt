@@ -3,3 +3,4 @@ requests
 python-dotenv
 black
 pytest-xdist
+pytest-playwright

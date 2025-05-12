@@ -13,7 +13,7 @@
 ├── requirements.txt          # Dependencies list
 ```
 
-## 🧪 Backend Test Architecture
+## 🧪 Test Architecture
 
 - **Pytest** is used for organizing and running test cases.
 - **Modular request builders** (like `OrderController`, `EsimController`) define and dispatch API calls via a clean controller pattern.
@@ -21,6 +21,27 @@
 - **Parametrized data** in `test_data.py` drives flexible and scalable test input.
 - **Validation helpers** ensure consistent assertions and reusable business logic for test evaluation.
 - **Environment variables** are managed via `.env` and loaded automatically.
+
+### Frontend Test Setup
+
+- **Playwright** is used for browser automation and UI validations.
+- **Page Object Model (POM)** is implemented using `BasePage` and specialized pages like `HomePage`, `SearchPackagePage`, and `CartPage`.
+- **Selectors and interaction methods** are centralized to reduce duplication and improve maintainability.
+- **Assertions** are handled using `assert_fields_match` to ensure consistency between UI pages (e.g., search → cart).
+- **Logging** is integrated to provide detailed step-by-step execution trace in test output.
+
+To run frontend tests:
+
+```bash
+pytest tests/frontend
+```
+
+Make sure Playwright browsers are installed:
+
+```bash
+playwright install
+```
+
 
 ---
 

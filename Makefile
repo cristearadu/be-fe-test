@@ -7,6 +7,7 @@ help:
 
 install:
 	pip install -r requirements.txt
+	playwright install
 
 test:
 	pytest -v -n "auto"
