@@ -13,4 +13,6 @@ class BaseController:
             raise ValueError(f"Unknown endpoint key: {key}")
 
         formatted_url = endpoint.path.format(**kwargs)
-        return http_request(endpoint.method, formatted_url, headers=headers, json=payload)
+        return http_request(
+            endpoint.method, formatted_url, headers=headers, json=payload
+        )

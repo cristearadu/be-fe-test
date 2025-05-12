@@ -3,23 +3,31 @@ from core import assert_fields_match
 
 def validate_order_payload(order_data: dict, expected_fields: dict, payload: dict):
     """
-        Validates the structure and values of the created order payload.
+    Validates the structure and values of the created order payload.
 
-        Args:
-            order_data (dict): The actual order data returned by the API.
-            expected_fields (dict): Expected values for certain fields in the order.
-            payload (dict): Original request payload used to create the order.
+    Args:
+        order_data (dict): The actual order data returned by the API.
+        expected_fields (dict): Expected values for certain fields in the order.
+        payload (dict): Original request payload used to create the order.
 
-        Raises:
-            AssertionError: If any of the order fields do not match the expected values.
+    Raises:
+        AssertionError: If any of the order fields do not match the expected values.
     """
-    assert order_data.get("package_id") == payload["package_slug"], "Package ID mismatch."
+    assert (
+        order_data.get("package_id") == payload["package_slug"]
+    ), "Package ID mismatch."
     assert order_data.get("quantity") == payload["quantity"], "Incorrect quantity."
-    assert order_data.get("description") == payload["description"], "Incorrect description."
+    assert (
+        order_data.get("description") == payload["description"]
+    ), "Incorrect description."
 
     assert_fields_match(order_data, expected_fields, context="Order → ")
-    assert order_data["price"] == expected_fields["price"], "Recommended retail price mismatch (USD)."
-    assert order_data["net_price"] == expected_fields["net_price"], "Net price mismatch (USD)."
+    assert (
+        order_data["price"] == expected_fields["price"]
+    ), "Recommended retail price mismatch (USD)."
+    assert (
+        order_data["net_price"] == expected_fields["net_price"]
+    ), "Net price mismatch (USD)."
 
 
 def validate_sim_block(sims: list, expected_quantity: int) -> list[str]:
@@ -36,7 +44,9 @@ def validate_sim_block(sims: list, expected_quantity: int) -> list[str]:
     Raises:
         AssertionError: If any expected field is missing or the quantity is incorrect.
     """
-    assert len(sims) == expected_quantity, f"Expected {expected_quantity} SIMs, found {len(sims)}."
+    assert (
+        len(sims) == expected_quantity
+    ), f"Expected {expected_quantity} SIMs, found {len(sims)}."
     iccids = []
     for i, sim in enumerate(sims):
         for field in ("iccid", "lpa", "qrcode"):

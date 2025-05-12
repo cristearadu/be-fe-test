@@ -23,7 +23,9 @@ def pytest_configure():
         log_file = os.path.join(log_dir, f"{timestamp}.log")
         os.environ["PYTEST_LOG_FILE"] = log_file  # store in env variable
     else:
-        log_file = os.environ["PYTEST_LOG_FILE"]  # all the other workers use the same file
+        log_file = os.environ[
+            "PYTEST_LOG_FILE"
+        ]  # all the other workers use the same file
 
     logger = logging.getLogger("pytest-logger")
     logger.setLevel(logging.DEBUG)
@@ -31,13 +33,13 @@ def pytest_configure():
     # just prevent duplicate handlers
     if not logger.handlers:
         file_handler = logging.FileHandler(log_file, encoding="utf-8")
-        file_formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
+        file_formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
         file_handler.setFormatter(file_formatter)
         file_handler.setLevel(logging.DEBUG)
         logger.addHandler(file_handler)
 
         console_handler = logging.StreamHandler()
-        console_formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
+        console_formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
         console_handler.setFormatter(console_formatter)
         console_handler.setLevel(logging.DEBUG)
         logger.addHandler(console_handler)

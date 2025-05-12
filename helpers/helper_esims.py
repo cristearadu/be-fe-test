@@ -24,5 +24,7 @@ class HelperEsims:
             dict: JSON response body from the eSIMs list API.
         """
         headers = default_json_headers(access_token)
-        response = self.controller.request(EndpointKeys.LIST_ESIMS.value, headers=headers, payload=params)
+        response = self.controller.request(
+            EndpointKeys.LIST_ESIMS.value, headers=headers, payload=params
+        )
         return response

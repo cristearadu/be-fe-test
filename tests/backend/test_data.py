@@ -7,7 +7,7 @@ ORDER_CREATION_CASES = [
             "quantity": 6,
             "package_slug": "merhaba-7days-1gb",
             "type": DEFAULT_SIM_TYPE,
-            "description": None
-        }
+            "description": None,
+        },
     )
 ]

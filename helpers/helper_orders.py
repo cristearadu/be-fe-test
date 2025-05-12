@@ -24,5 +24,7 @@ class HelperOrders:
         """
         headers = default_json_headers(access_token)
         payload = order_payload(**kwargs)
-        response = self.controller.request(EndpointKeys.CREATE_ORDER.value, headers=headers, payload=payload)
+        response = self.controller.request(
+            EndpointKeys.CREATE_ORDER.value, headers=headers, payload=payload
+        )
         return response

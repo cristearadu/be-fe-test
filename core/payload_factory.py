@@ -14,7 +14,7 @@ def auth_token_payload(grant_type: str = GrantType.client_credentials.value) -> 
     return {
         "client_id": CLIENT_ID,
         "client_secret": CLIENT_SECRET,
-        "grant_type": grant_type
+        "grant_type": grant_type,
     }
 
 
@@ -25,9 +25,7 @@ def auth_token_header() -> dict:
     Returns:
         dict: Standard headers used in most API requests.
     """
-    return {
-        "Accept": "application/json"
-    }
+    return {"Accept": "application/json"}
 
 
 def default_json_headers(access_token: str) -> dict:
@@ -40,10 +38,7 @@ def default_json_headers(access_token: str) -> dict:
     Returns:
         dict: Headers including Accept and Authorization.
     """
-    return {
-        "Accept": "application/json",
-        "Authorization": f"Bearer {access_token}"
-    }
+    return {"Accept": "application/json", "Authorization": f"Bearer {access_token}"}
 
 
 def order_payload(**kwargs) -> dict:
@@ -66,5 +61,5 @@ def order_payload(**kwargs) -> dict:
         "package_id": kwargs.get("package_slug", ""),
         "type": kwargs.get("type", ""),
         "description": kwargs.get("description", ""),
-        "brand_settings_name": kwargs.get("brand_settings_name", "")
+        "brand_settings_name": kwargs.get("brand_settings_name", ""),
     }
