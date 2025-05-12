@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+WEB_BASE_URL = os.getenv("WEB_BASE_URL")
 API_VERSION = os.getenv("API_VERSION")
 APP_URL = f"{os.getenv('BASE_URL')}/{API_VERSION}"
 CLIENT_ID = os.getenv("CLIENT_ID")
@@ -41,3 +42,15 @@ class HTTPStatusCodes(Enum):
 
 class GrantType(Enum):
     client_credentials = "client_credentials"
+
+
+class Timeout(Enum):
+    SHORT = 1_000
+    MEDIUM = 5_000
+    LONG = 15_000
+    EXTRA_LONG = 30_000
+    DEFAULT = 60_000
+
+
+class WebUIDataTypes(Enum):
+    DATA_TEST_ID= "data-testid"
