@@ -64,6 +64,7 @@ API_VERSION=v2
 BASE_URL=https://{URL}
 CLIENT_ID=your-client-id
 CLIENT_SECRET=your-client-secret
+WEB_BASE_URL=https://{URL}
 ```
 
 ---
